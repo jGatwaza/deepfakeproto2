@@ -12,6 +12,7 @@ import './App.css';
 import UrlForm from './components/UrlForm';
 import ResultCard from './components/ResultCard';
 import type { AnalysisResult } from './components/ResultCard';
+import { analyzeImage } from './api';
 
 const useStyles = makeStyles({
   container: {
@@ -47,20 +48,9 @@ function App() {
     setImageUrl(url);
     
     try {
-      const response = await fetch('/api/analyze-url', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ url }),
-      });
-
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.error || 'Failed to analyze image');
-      }
-
-      const data = await response.json();
+      // Use the analyzeImage function from our api.ts file
+      // This will use a mock in development and the real API in production
+      const data = await analyzeImage(url);
       setResult(data);
     } catch (err) {
       console.error('Error:', err);

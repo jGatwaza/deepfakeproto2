@@ -46,13 +46,15 @@ cd ai-image-analyzer
 npm install
 ```
 
-3. Create a `.env` file in the root directory with your OpenAI API key:
+3. Create a `.env` file in the root directory with your OpenAI API key (only needed for production):
 
 ```
 OPENAI_API_KEY=your_api_key_here
 ```
 
 4. Run the development server
+
+> **Note**: In development mode, the app uses a mock API response instead of calling OpenAI, so no API key is required locally.
 
 ```bash
 npm run dev
